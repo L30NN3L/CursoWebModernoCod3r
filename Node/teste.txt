@@ -1,0 +1,3 @@
+Este arquivo é um teste, para saber como o Node.JS captura este texto e exibe na tela.
+Como será que isto funciona?
+Vamos ver...
