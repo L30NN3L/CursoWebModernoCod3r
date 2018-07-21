@@ -9,9 +9,46 @@
 
 <body class="conteudo exercicio">
     <div>
-        <a href="https://google.com.br">Google</a>
+        <!-- Caso adicionar evento onclick ou qualquer evento... 
+            é necessário digitar (event) como parâmetro,
+        pois o browser conseguirá interpretar e captar o evento 
+        por meio desta palavra, pois existe um contexto -->
+        <a espera-um-pouco href="https://google.com.br" >Google</a>
+        <!-- 
+            
+            Abordagem 1: Usar evento diretamente no elemento HTML. 
+            Porém é considerado 'Hard Coded' 
+           -> onclick="navegarEm5s(event)"
+
+            Abordagem 2: Manipular a DOM pelo JS e configurar eventos.
+            Porém, o encapsulamento é muito forte. Fica muito implícito...
+           -> const a = document.querySelector('a')
+              a.onclick = navegarEm5s
+
+            Abordagem 3: Definir um atributo personalizado 
+            no elemento HTML,
+            manipular a DOM pelo JS referenciando o atributo.
+            O browser ignora atributos personalizados,
+            mas são muito úteis para JS
+           -> linha 16, 50 e 51 atual
+
+        -->
     </div>
     <script>
-        // ...
+        function navegarEm5s(e) {
+            e.preventDefault()
+            console.log('Sainda em 5s...')
+            setTimeout(() => {
+                 const link = e.target /* target == link */
+                 window.location.href = link.href
+            }, 5000) 
+        }
+
+       /*  const a = document.querySelector('a')
+        a.onclick = navegarEm5s */
+
+        const a = document.querySelector('[espera-um-pouco]')
+        a.onclick = navegarEm5s
+
     </script>
 </body>
